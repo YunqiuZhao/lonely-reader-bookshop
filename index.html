@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>孤独的阅读者书坊</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        "PingFang SC",
+        "Hiragino Sans GB",
+        "Microsoft YaHei",
+        sans-serif;
+      color: #222;
+      background: #f8f7f3;
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(248, 247, 243, 0.94);
+      border-bottom: 1px solid #dedbd3;
+      backdrop-filter: blur(10px);
+    }
+
+    nav {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 18px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .logo {
+      font-size: 19px;
+      font-weight: 700;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      font-size: 14px;
+    }
+
+    .hero {
+      max-width: 1100px;
+      min-height: 72vh;
+      margin: 0 auto;
+      padding: 100px 24px 70px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .eyebrow {
+      margin-bottom: 16px;
+      color: #776f61;
+      font-size: 14px;
+      letter-spacing: 0.16em;
+    }
+
+    h1 {
+      max-width: 850px;
+      margin: 0;
+      font-family:
+        "Songti SC",
+        "STSong",
+        "Noto Serif CJK SC",
+        serif;
+      font-size: clamp(44px, 8vw, 86px);
+      font-weight: 500;
+      line-height: 1.15;
+      letter-spacing: -0.04em;
+    }
+
+    .hero p {
+      max-width: 670px;
+      margin: 30px 0 0;
+      color: #5e5a52;
+      font-size: 18px;
+    }
+
+    .button {
+      display: inline-block;
+      align-self: flex-start;
+      margin-top: 34px;
+      padding: 12px 22px;
+      border: 1px solid #222;
+      border-radius: 999px;
+      transition: 0.2s ease;
+    }
+
+    .button:hover {
+      color: #f8f7f3;
+      background: #222;
+    }
+
+    section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 90px 24px;
+    }
+
+    .section-title {
+      margin: 0 0 12px;
+      font-family:
+        "Songti SC",
+        "STSong",
+        serif;
+      font-size: 38px;
+      font-weight: 500;
+    }
+
+    .section-intro {
+      max-width: 650px;
+      margin: 0 0 40px;
+      color: #6d685f;
+    }
+
+    .topics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      min-height: 210px;
+      padding: 28px;
+      border: 1px solid #d9d5cc;
+      border-radius: 14px;
+      background: #fbfaf7;
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(45, 40, 32, 0.08);
+    }
+
+    .card-number {
+      color: #918a7c;
+      font-size: 13px;
+    }
+
+    .card h3 {
+      margin: 42px 0 10px;
+      font-size: 22px;
+    }
+
+    .card p {
+      margin: 0;
+      color: #69645b;
+      font-size: 15px;
+    }
+
+    .path {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 70px;
+      align-items: start;
+    }
+
+    .path-title {
+      position: sticky;
+      top: 110px;
+    }
+
+    .path-title h2 {
+      margin: 0 0 18px;
+      font-family:
+        "Songti SC",
+        "STSong",
+        serif;
+      font-size: 44px;
+      font-weight: 500;
+    }
+
+    .path-title p {
+      color: #69645b;
+    }
+
+    .step {
+      padding: 25px 0;
+      border-top: 1px solid #d8d4ca;
+    }
+
+    .step:last-child {
+      border-bottom: 1px solid #d8d4ca;
+    }
+
+    .step span {
+      color: #928a7b;
+      font-size: 13px;
+    }
+
+    .step h3 {
+      margin: 8px 0;
+      font-size: 21px;
+    }
+
+    .step p {
+      margin: 0;
+      color: #69645b;
+    }
+
+    .angles {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .tag {
+      padding: 10px 16px;
+      border: 1px solid #cbc6bb;
+      border-radius: 999px;
+      background: transparent;
+    }
+
+    .about {
+      max-width: 760px;
+    }
+
+    .about p {
+      color: #5f5b53;
+      font-size: 17px;
+    }
+
+    footer {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 45px 24px;
+      border-top: 1px solid #d8d4ca;
+      color: #777167;
+      font-size: 14px;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    @media (max-width: 760px) {
+      nav {
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        min-height: 65vh;
+        padding-top: 80px;
+      }
+
+      .topics {
+        grid-template-columns: 1fr;
+      }
+
+      .path {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .path-title {
+        position: static;
+      }
+
+      section {
+        padding-top: 65px;
+        padding-bottom: 65px;
+      }
+
+      footer {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <a class="logo" href="#">孤独的阅读者书坊</a>
+
+      <div class="nav-links">
+        <a href="#topics">探索主题</a>
+        <a href="#path">学习路径</a>
+        <a href="#discover">发现书籍</a>
+        <a href="#about">关于</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="hero">
+      <div class="eyebrow">LONELY READER BOOKSHOP</div>
+
+      <h1>始于惊奇，<br>让我们一起发现。</h1>
+
+      <p>
+        从一个问题出发，通过主题、概念和书籍之间的联系，
+        建立属于自己的理解路径。
+      </p>
+
+      <a class="button" href="#topics">开始探索</a>
+    </div>
+
+    <section id="topics">
+      <h2 class="section-title">探索主题</h2>
+
+      <p class="section-intro">
+        这些主题不是封闭的学科分类，而是进入书籍与知识世界的不同入口。
+      </p>
+
+      <div class="topics">
+        <article class="card">
+          <div class="card-number">01</div>
+          <h3>批判性思维</h3>
+          <p>理解问题、概念、论证、证据与逻辑谬误。</p>
+        </article>
+
+        <article class="card">
+          <div class="card-number">02</div>
+          <h3>经济学原理</h3>
+          <p>从稀缺、选择、市场和制度理解日常生活。</p>
+        </article>
+
+        <article class="card">
+          <div class="card-number">03</div>
+          <h3>现代中国经济</h3>
+          <p>理解改革、城市化、土地、财政与经济转型。</p>
+        </article>
+
+        <article class="card">
+          <div class="card-number">04</div>
+          <h3>英美哲学家</h3>
+          <p>探索知识、语言、经验、自由与社会秩序。</p>
+        </article>
+
+        <article class="card">
+          <div class="card-number">05</div>
+          <h3>拉美研究</h3>
+          <p>从历史、政治、经济、社会与文化理解拉丁美洲。</p>
+        </article>
+
+        <article class="card">
+          <div class="card-number">06</div>
+          <h3>如何阅读</h3>
+          <p>进入文本、识别问题、提取结构并形成自己的理解。</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="path">
+      <div class="path">
+        <div class="path-title">
+          <div class="eyebrow">第一条学习路径</div>
+          <h2>如何思考？</h2>
+          <p>
+            思考不只是表达意见。它意味着明确问题、澄清概念、
+            分析论证、评估证据，并比较不同解释。
+          </p>
+        </div>
+
+        <div>
+          <article class="step">
+            <span>第一步</span>
+            <h3>我们正在回答什么问题？</h3>
+            <p>区分主题、问题和观点，在回答之前先明确问题。</p>
+          </article>
+
+          <article class="step">
+            <span>第二步</span>
+            <h3>重要概念是什么意思？</h3>
+            <p>澄清定义，观察同一个词在不同语境中的意义。</p>
+          </article>
+
+          <article class="step">
+            <span>第三步</span>
+            <h3>一个观点是如何被论证的？</h3>
+            <p>识别结论、前提、证据以及没有说出来的假设。</p>
+          </article>
+
+          <article class="step">
+            <span>第四步</span>
+            <h3>证据足够可靠吗？</h3>
+            <p>区分事实、观点、解释和价值判断，评估信息来源。</p>
+          </article>
+
+          <article class="step">
+            <span>第五步</span>
+            <h3>还有其他可能的答案吗？</h3>
+            <p>比较不同立场，寻找反例，并尝试反向提出问题。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="discover">
+      <h2 class="section-title">从不同角度发现书籍</h2>
+
+      <p class="section-intro">
+        同一本书可以同时进入多个主题，也可以与其他书形成补充、延伸或争论。
+      </p>
+
+      <div class="angles">
+        <span class="tag">从问题出发</span>
+        <span class="tag">从概念出发</span>
+        <span class="tag">从学科出发</span>
+        <span class="tag">从人物出发</span>
+        <span class="tag">从国家和地区出发</span>
+        <span class="tag">从立场与争论出发</span>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="about">
+        <h2 class="section-title">关于书坊</h2>
+
+        <p>
+          孤独的阅读者书坊以六万两千余册标准化书目信息为基础，
+          尝试用主题、问题、概念、人物和地区等不同角度重新组织书籍。
+        </p>
+
+        <p>
+          这里不是一份固定不变的图书目录。我们希望从真实的问题出发，
+          发现书籍之间原本不易看见的联系，帮助读者建立自己的阅读路径与知识结构。
+        </p>
+
+        <p>
+          网站将持续增加新的主题、书目、关键词、学习路径与关联关系。
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>© 2026 孤独的阅读者书坊</span>
+    <span>始于惊奇，让我们一起发现</span>
+  </footer>
+</body>
+</html>
