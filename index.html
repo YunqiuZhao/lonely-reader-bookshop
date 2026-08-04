@@ -36,7 +36,24 @@
     body {
       margin: 0;
       color: var(--text);
-      background: var(--background);
+      background:
+  radial-gradient(
+    circle at 20% 10%,
+    rgba(180,170,150,0.18),
+    transparent 35%
+  ),
+  radial-gradient(
+    circle at 80% 30%,
+    rgba(150,160,180,0.12),
+    transparent 40%
+  ),
+  linear-gradient(
+    180deg,
+    #faf9f6,
+    #f2efe8
+  );
+
+background-attachment: fixed;
       font-family:
         -apple-system,
         BlinkMacSystemFont,
